@@ -1,0 +1,35 @@
+{
+  "name": "kwest",
+  "version": "1.0.0",
+  "description": "A web application for Dungeons and Dragons campaigns featuring collaborative journal and quest management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Segm3nts/Kwest.git"
+  },
+  "keywords": [
+    "kwest",
+    "dnd",
+    "quest",
+    "journal",
+    "compendium",
+    "player",
+    "manager",
+    "collaborate"
+  ],
+  "author": "Jozua Zwijnenburg",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Segm3nts/Kwest/issues"
+  },
+  "homepage": "https://github.com/Segm3nts/Kwest#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "debug": "^2.6.9",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
+  }
+}

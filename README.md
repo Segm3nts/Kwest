@@ -38,6 +38,8 @@ Clicking on a tag in the journal information panel will transport the user to th
 
 ### *Entry*
 
+This is the default journal type, and is the most common one that both players and Dungeon Masters will use.
+
 An *entry* can be given an optional title, and the time of journal creation will be logged. Content can be added in the text region below.
 
 Underneath the text region there is a pane which allows adding tags to the journal entry. To create a new tag, write the tag name in the panel and hit *Enter*, or the *+* button. This will remove the journal entry from the untagged journal entries list, create a journal for the tag (if it does not exist yet) and add the entry to that journal.
