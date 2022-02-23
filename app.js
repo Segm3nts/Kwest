@@ -15,8 +15,8 @@ var adminRouter = require('./routes/admin');
 
 // Initialise MySQL connection pool
 var dbConnectionPool = mysql.createPool({
-    host: "localhost",
-    database: "kwest"
+  host: "localhost",
+  database: "kwest"
 });
 
 // Create an Express instance
@@ -24,8 +24,8 @@ var app = express();
 
 // Add database pool to request
 app.use(function(req, res, next){
-    req.pool = dbConnectionPool;
-    next();
+  req.pool = dbConnectionPool;
+  next();
 });
 
 // view engine setup
@@ -38,10 +38,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-    secret: "my kwest secret",
-    resave: true,
-    saveUninitialized: true,
-    cookie: { secure: true }
+  secret: "my kwest secret",
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: true }
 }))
 
 // Use static files from public/
