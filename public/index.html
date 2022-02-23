@@ -18,7 +18,7 @@
 				<p class="title">
 					{{ cmp.name }}
 				</p>
-				<hr>
+				<hr />
 				<p class="players">
 					Players: {{ cmp.players }}
 				</p>
@@ -28,6 +28,7 @@
 				<p class="date">
 					Campaign started: {{ cmp.started }}
 				</p>
+				<br />
 				<a class="button" v-bind:href="'/campaigns/' + cmp.id">
 					Join campaign
 				</a>
@@ -36,8 +37,16 @@
 				</a>
 			</div>
 		</div>
-		<div>
+		<hr>
+		<div style="text-align: center">
 			<!-- Area with button for creating your own campaign -->
+			<h2>
+				Looking to create your own campaign? Start one here.
+			</h2>
+			<br />
+			<a class="button" v-bind:href="/admin/create/">
+				Create a new campaign
+			</a>
 		</div>
 	</body>
 </html>
