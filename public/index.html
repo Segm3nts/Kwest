@@ -5,7 +5,7 @@
     	<meta charset="utf-8">
     	<link rel="stylesheet" href="stylesheets/style.css">
     	<script src="https://unpkg.com/vue@3"></script>
-		<!--<script src="javascripts/index.js" defer></script>-->
+		<script src="javascripts/index.js" defer></script>
 	</head>
 	<body>
 		<div class="header">
@@ -13,7 +13,6 @@
 			<img src="images/kwest.png" alt="Kwest">
 		</div>
 		<div id="cards">
-			<p>{{ message }}</p>
 			<!-- A list of "cards" for each registered campaign -->
 			<div class="card" v-for="cmp in campaigns" :key="cmp.id">
 				<p class="title">
@@ -40,14 +39,5 @@
 		<div>
 			<!-- Area with button for creating your own campaign -->
 		</div>
-		<script>
-			Vue.createApp({
-				data() {
-					return {
-						message: 'Hello Vue!'
-					}
-				}
-			}).mount('#cards')
-		</script>
 	</body>
 </html>
