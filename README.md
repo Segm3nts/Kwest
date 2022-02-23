@@ -24,7 +24,7 @@ npm start
 
 Accessing the homepage (route `/`) of the web server will show a page with a list of registered campaigns. Underneath, there is a button which allows you to create a campaign, which sets yourself as the Dungeon Master after creating a password.
 
-**WARNING: DO NOT USE A PASSWORD WHICH YOU USE ON OTHER SITES!!!** This password is stored in plain text on the server's filesystem, and is not secured!
+**WARNING: DO NOT USE A PASSWORD WHICH YOU USE ON OTHER SITES!!!** This password is stored in plain text on the database, and is not secured!
 
 The campaign page houses a list of journals (tags), and a small list of untagged journal entries. Clicking the *+* button in the bottom right corner will create a new journal entry and place it in the untagged journal entries list. Clicking a journal entry will open the journal entry in the journal information panel.
 
