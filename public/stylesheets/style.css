@@ -17,6 +17,7 @@ a {
 	width: 100%;
 	text-align: center;
 	border-bottom: 0.4em solid #0c4;
+	margin-bottom: 1em;
 }
 
 .header img {
@@ -80,4 +81,32 @@ a.button {
 
 h2 {
 	text-align: center;
+}
+
+#paned {
+	display: inline;
+}
+
+#compendium {
+	width: 33%;
+	height: 100%;
+	float: left;
+	background-color: lightpink;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	vertical-align: center;
+}
+
+.journal {
+	width: 100%;
+	background-color: lightyellow;
+	min-height: 5em;
+}
+
+#information {
+	width: 66%;
+	height: 100%;
+	float: right;
+	background-color: lightblue;
 }

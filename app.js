@@ -11,7 +11,7 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var entryRouter = require('./routes/entry');
 var journalRouter = require('./routes/journal');
-var adminRouter = require('./routes/admin');
+var compendiumRouter = require('./routes/compendium');
 
 // Initialise MySQL connection pool
 var dbConnectionPool = mysql.createPool({
@@ -51,7 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/entry', entryRouter);
 app.use('/journal', journalRouter);
-app.use('/admin', adminRouter);
+app.use('/compendium', compendiumRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

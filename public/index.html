@@ -13,8 +13,8 @@
 			<img src="images/kwest.png" alt="Kwest">
 		</div>
 		<div id="cards">
-			<!-- A list of "cards" for each registered campaign -->
-			<div class="card" v-for="cmp in campaigns" :key="cmp.id">
+			<!-- A list of "cards" for each registered compendium -->
+			<div class="card" v-for="cmp in compendia" :key="cmp.id">
 				<p class="title">
 					{{ cmp.name }}
 				</p>
@@ -26,11 +26,11 @@
 					Dungeon Master: {{ cmp.dm }}
 				</p>
 				<p class="date">
-					Campaign started: {{ cmp.started }}
+					Compendium started: {{ cmp.started }}
 				</p>
 				<br />
-				<a class="button" v-bind:href="'/campaigns/' + cmp.id">
-					Join campaign
+				<a class="button" v-bind:href="'/compendium/' + cmp.id">
+					Access compendium
 				</a>
 				<a class="button" v-bind:href="'/admin/login/' + cmp.id">
 					Login as dungeon master
@@ -39,13 +39,13 @@
 		</div>
 		<hr>
 		<div style="text-align: center">
-			<!-- Area with button for creating your own campaign -->
+			<!-- Area with button for creating your own compendium -->
 			<h2>
-				Looking to create your own campaign? Start one here.
+				Looking to create your own compendium? Start one here.
 			</h2>
 			<br />
 			<a class="button" v-bind:href="/admin/create/">
-				Create a new campaign
+				Create a new compendium
 			</a>
 		</div>
 	</body>

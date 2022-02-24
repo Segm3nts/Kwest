@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>Kwest</title>
+    	<meta charset="utf-8">
+    	<link rel="stylesheet" href="../stylesheets/style.css">
+    	<script src="https://kit.fontawesome.com/a1919cc9b1.js" crossorigin="anonymous"></script>
+    	<script src="https://unpkg.com/vue@3"></script>
+		<script src="../javascripts/compendium.js" defer></script>
+	</head>
+	<body>
+		<div class=header>
+			<!-- Header with "Kwest" in the middle -->
+			<img src="../images/kwest.png" alt="Kwest">
+		</div>
+		<br />
+		<div id=paned>
+			<div id=compendium>
+				<!-- A list of all the journals in the compedium -->
+				<div class=journal v-for="jrnl in journals" :key="jrnl.id">
+					<i class="fa-solid fa-compass"></i>
+					<span class="heading">{{ jrnl.title }}</span>
+				</div>
+			</div>
+			<div id=information>
+				<!-- The journal, showing all the entries that tag it -->
+				Journal
+				description
+				entry
+				entry
+				entry
+			</div>
+		</div>
+	</body>
+</html>

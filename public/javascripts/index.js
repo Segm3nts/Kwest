@@ -1,7 +1,7 @@
 Vue.createApp({
 	data() {
 		return {
-			campaigns: [
+			compendia: [
 				{
 					name: "Anderim",
 					id: 1,
