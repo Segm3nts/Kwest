@@ -24,7 +24,7 @@ a {
 	padding: 1em;
 }
 
-a.button {
+.button {
 	background-color: #0a3;
 	border: 2em #0c4;
 	color: white;
@@ -34,6 +34,7 @@ a.button {
 	border-radius: 1em;
 	font-size: 1.5em;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .cards {
@@ -69,14 +70,19 @@ a.button {
 }
 
 .card .dm {
-	width: 50%;
+	width: 45%;
+	text-align: left;
+	float: left;
+}
+
+.card .date {
+	width: 45%;
 	text-align: right;
 	float: right;
 }
 
-.card .date {
+h1 {
 	text-align: center;
-	float: center;
 }
 
 h2 {
@@ -109,4 +115,18 @@ h2 {
 	height: 100%;
 	float: right;
 	background-color: lightblue;
+}
+
+form {
+	text-align: center;
+}
+
+form label {
+	font-size: 2em;
+}
+
+form input {
+	border-radius: 1em;
+	font-size: 2em;
+	text-align: center;
 }

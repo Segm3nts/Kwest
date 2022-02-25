@@ -17,6 +17,7 @@
 <ref refid="3683c0cf-9498-11ec-aded-27e92bca9c27"/>
 <ref refid="5b7201bc-9499-11ec-b7af-27e92bca9c27"/>
 <ref refid="c908dd07-94f9-11ec-9806-0b7a5b499676"/>
+<ref refid="2e52b99f-95dc-11ec-8cc4-e114922c2b20"/>
 </reflist>
 </ownedType>
 </Package>
@@ -37,10 +38,12 @@
 <ref refid="368411cc-9498-11ec-aee2-27e92bca9c27"/>
 <ref refid="5b726dec-9499-11ec-a205-27e92bca9c27"/>
 <ref refid="c90958f7-94f9-11ec-b509-0b7a5b499676"/>
+<ref refid="2e531fa8-95dc-11ec-aad6-e114922c2b20"/>
 <ref refid="0b9f0c8e-94ff-11ec-a281-0b7a5b499676"/>
 <ref refid="4085b307-94ff-11ec-9fd6-0b7a5b499676"/>
 <ref refid="65be290a-94ff-11ec-a450-0b7a5b499676"/>
 <ref refid="6995743f-94ff-11ec-a173-0b7a5b499676"/>
+<ref refid="86878d14-95dc-11ec-b288-e114922c2b20"/>
 </reflist>
 </ownedPresentation>
 </Diagram>
@@ -76,7 +79,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 1138.0, 125.34479154941317)</val>
 </matrix>
 <width>
-<val>299.0</val>
+<val>213.0</val>
 </width>
 <height>
 <val>134.0</val>
@@ -99,7 +102,7 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>compendium_id INT AUTO_INCREMENT</val>
+<val>c_id INT AUTO_INCREMENT</val>
 </name>
 </Property>
 <Property id="f35d8ef4-9492-11ec-9372-27e92bca9c27">
@@ -123,7 +126,7 @@
 <ref refid="edef0e0d-9492-11ec-a056-27e92bca9c27"/>
 </class_>
 <name>
-<val>started DATE</val>
+<val>timestamp DATE</val>
 </name>
 </Property>
 <Property id="fb97b8b1-9492-11ec-a3d1-27e92bca9c27">
@@ -131,7 +134,7 @@
 <ref refid="edef0e0d-9492-11ec-a056-27e92bca9c27"/>
 </class_>
 <name>
-<val>password TINYTEXT</val>
+<val>+ password VARCHAR(31)</val>
 </name>
 </Property>
 <Class id="41dce565-9493-11ec-b583-27e92bca9c27">
@@ -162,10 +165,10 @@
 </Class>
 <ClassItem id="41dd43eb-9493-11ec-8258-27e92bca9c27">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 836.0, 220.34479154941317)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 854.3578314062335, 220.34479154941317)</val>
 </matrix>
 <width>
-<val>242.0</val>
+<val>214.0</val>
 </width>
 <height>
 <val>117.0</val>
@@ -188,7 +191,7 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>entry_id INT AUTO_INCREMENT</val>
+<val>e_id INT AUTO_INCREMENT</val>
 </name>
 </Property>
 <Property id="83449767-9493-11ec-8a49-27e92bca9c27">
@@ -204,7 +207,7 @@
 <ref refid="41dce565-9493-11ec-b583-27e92bca9c27"/>
 </class_>
 <name>
-<val>timestamp DATETIME</val>
+<val>timestamp TIMESTAMP</val>
 </name>
 </Property>
 <Property id="7bbf39a9-9495-11ec-9bad-27e92bca9c27">
@@ -212,7 +215,7 @@
 <ref refid="41dce565-9493-11ec-b583-27e92bca9c27"/>
 </class_>
 <name>
-<val>text TEXT</val>
+<val>content TEXT</val>
 </name>
 </Property>
 <Class id="3683c0cf-9498-11ec-aded-27e92bca9c27">
@@ -242,10 +245,10 @@
 </Class>
 <ClassItem id="368411cc-9498-11ec-aee2-27e92bca9c27">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 581.0, 295.8447915494132)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 603.1560034213167, 295.8447915494132)</val>
 </matrix>
 <width>
-<val>195.0</val>
+<val>154.0</val>
 </width>
 <height>
 <val>83.0</val>
@@ -271,7 +274,7 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>entry_id FOREIGN_KEY</val>
+<val>e_id FOREIGN_KEY</val>
 </name>
 </Property>
 <Property id="55058ee2-9498-11ec-bf51-27e92bca9c27">
@@ -282,13 +285,14 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>journal_id FOREIGN_KEY</val>
+<val>j_id FOREIGN_KEY</val>
 </name>
 </Property>
 <Class id="5b7201bc-9499-11ec-b7af-27e92bca9c27">
 <clientDependency>
 <reflist>
 <ref refid="449aa17c-94ff-11ec-b385-0b7a5b499676"/>
+<ref refid="87bd6398-95dc-11ec-a288-e114922c2b20"/>
 </reflist>
 </clientDependency>
 <name>
@@ -301,6 +305,7 @@
 <ref refid="695a1a13-9499-11ec-b788-27e92bca9c27"/>
 <ref refid="6cd033d6-9499-11ec-ae43-27e92bca9c27"/>
 <ref refid="f2579671-94fb-11ec-ac7b-0b7a5b499676"/>
+<ref refid="8c3808b8-95d6-11ec-b9ab-e114922c2b20"/>
 </reflist>
 </ownedAttribute>
 <package>
@@ -319,13 +324,13 @@
 </Class>
 <ClassItem id="5b726dec-9499-11ec-a205-27e92bca9c27">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 893.0, 362.5)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 862.0, 358.8447915494132)</val>
 </matrix>
 <width>
-<val>255.0</val>
+<val>209.0</val>
 </width>
 <height>
-<val>134.0</val>
+<val>151.0</val>
 </height>
 <diagram>
 <ref refid="e9a1f10b-9492-11ec-8f24-27e92bca9c27"/>
@@ -345,7 +350,7 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>journal_id INT AUTO_INCREMENT</val>
+<val>j_id INT AUTO_INCREMENT</val>
 </name>
 </Property>
 <Property id="663a321b-9499-11ec-b8fd-27e92bca9c27">
@@ -353,7 +358,7 @@
 <ref refid="5b7201bc-9499-11ec-b7af-27e92bca9c27"/>
 </class_>
 <name>
-<val>compendium_id FOREIGN_KEY</val>
+<val>c_id FOREIGN_KEY</val>
 </name>
 </Property>
 <Property id="695a1a13-9499-11ec-b788-27e92bca9c27">
@@ -403,7 +408,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 553.5, 109.34479154941316)</val>
 </matrix>
 <width>
-<val>250.0</val>
+<val>214.0</val>
 </width>
 <height>
 <val>117.0</val>
@@ -426,7 +431,7 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>player_id INT AUTO_INCREMENT</val>
+<val>p_id INT AUTO_INCREMENT</val>
 </name>
 </Property>
 <Property id="e095195a-94f9-11ec-9bdd-0b7a5b499676">
@@ -434,7 +439,7 @@
 <ref refid="c908dd07-94f9-11ec-9806-0b7a5b499676"/>
 </class_>
 <name>
-<val>compendium_id FOREIGN_KEY</val>
+<val>c_id FOREIGN_KEY</val>
 </name>
 </Property>
 <Property id="f2579671-94fb-11ec-ac7b-0b7a5b499676">
@@ -442,7 +447,7 @@
 <ref refid="5b7201bc-9499-11ec-b7af-27e92bca9c27"/>
 </class_>
 <name>
-<val>timestamp DATETIME</val>
+<val>timestamp TIMESTAMP</val>
 </name>
 </Property>
 <DependencyItem id="0b9f0c8e-94ff-11ec-a281-0b7a5b499676">
@@ -459,7 +464,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 791.0, 150.84479154941317)</val>
 </matrix>
 <points>
-<val>[(347.0, 29.5), (12.5, 29.5)]</val>
+<val>[(347.0, 29.5), (-23.5, 29.5)]</val>
 </points>
 <head-connection>
 <ref refid="4085b307-94ff-11ec-9fd6-0b7a5b499676"/>
@@ -495,10 +500,10 @@
 <ref refid="449aa17c-94ff-11ec-b385-0b7a5b499676"/>
 </subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1272.0, 475.8447915494132)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1235.5867062790257, 475.8447915494132)</val>
 </matrix>
 <points>
-<val>[(-134.0, -295.5), (-163.00560000026996, -295.5), (-163.00560000026996, -155.84479154941323), (-95.0, -155.84479154941323), (-95.0, -41.5), (-124.0, -41.5)]</val>
+<val>[(-97.58670627902575, -295.50000000000006), (-127.4581226314674, -295.50000000000006), (-127.4581226314674, -155.8447915494133), (-127.4581226314674, -44.65216059313167), (-164.58670627902575, -44.652160593131725)]</val>
 </points>
 <head-connection>
 <ref refid="edef6097-9492-11ec-88dc-27e92bca9c27"/>
@@ -542,7 +547,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 853.0, 489.8447915494132)</val>
 </matrix>
 <points>
-<val>[(40.0, -71.844791549413), (-17.0, -71.844791549413), (-17.0, -122.155208450587), (-77.0, -122.15520845058694)]</val>
+<val>[(9.0, -75.49999999999977), (-17.0, -75.49999999999972), (-17.0, -122.155208450587), (-95.84399657868335, -122.15520845058694)]</val>
 </points>
 <head-connection>
 <ref refid="5b726dec-9499-11ec-a205-27e92bca9c27"/>
@@ -581,7 +586,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 853.0, 469.8447915494132)</val>
 </matrix>
 <points>
-<val>[(-17.0, -195.65520845058683), (-49.5, -195.65520845058683), (-49.5, -122.15520845058694), (-77.0, -122.15520845058694)]</val>
+<val>[(1.3578314062335721, -195.65520845058683), (-49.5, -195.65520845058683), (-49.5, -122.15520845058694), (-95.84399657868335, -122.15520845058694)]</val>
 </points>
 <head-connection>
 <ref refid="41dd43eb-9493-11ec-8258-27e92bca9c27"/>
@@ -622,4 +627,123 @@
 <val>realname VARCHAR(63)</val>
 </name>
 </Property>
+<Property id="8c3808b8-95d6-11ec-b9ab-e114922c2b20">
+<class_>
+<ref refid="5b7201bc-9499-11ec-b7af-27e92bca9c27"/>
+</class_>
+<name>
+<val>i_id FOREIGN_KEY</val>
+</name>
+</Property>
+<Class id="2e52b99f-95dc-11ec-8cc4-e114922c2b20">
+<name>
+<val>icons</val>
+</name>
+<ownedAttribute>
+<reflist>
+<ref refid="362e293c-95dc-11ec-a02a-e114922c2b20"/>
+<ref refid="44c63553-95dc-11ec-8546-e114922c2b20"/>
+<ref refid="712a4b13-95dc-11ec-9833-e114922c2b20"/>
+</reflist>
+</ownedAttribute>
+<package>
+<ref refid="58d6c2e8-66f8-11ec-b4c8-0456e5e540ed"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="2e531fa8-95dc-11ec-aad6-e114922c2b20"/>
+</reflist>
+</presentation>
+<supplierDependency>
+<reflist>
+<ref refid="87bd6398-95dc-11ec-a288-e114922c2b20"/>
+</reflist>
+</supplierDependency>
+</Class>
+<ClassItem id="2e531fa8-95dc-11ec-aad6-e114922c2b20">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 1164.1657661131276, 407.2989669858127)</val>
+</matrix>
+<width>
+<val>209.0</val>
+</width>
+<height>
+<val>100.0</val>
+</height>
+<diagram>
+<ref refid="e9a1f10b-9492-11ec-8f24-27e92bca9c27"/>
+</diagram>
+<show_operations>
+<val>0</val>
+</show_operations>
+<subject>
+<ref refid="2e52b99f-95dc-11ec-8cc4-e114922c2b20"/>
+</subject>
+</ClassItem>
+<Property id="362e293c-95dc-11ec-a02a-e114922c2b20">
+<class_>
+<ref refid="2e52b99f-95dc-11ec-8cc4-e114922c2b20"/>
+</class_>
+<isStatic>
+<val>1</val>
+</isStatic>
+<name>
+<val>i_id INT AUTO_INCREMENT</val>
+</name>
+</Property>
+<Property id="44c63553-95dc-11ec-8546-e114922c2b20">
+<class_>
+<ref refid="2e52b99f-95dc-11ec-8cc4-e114922c2b20"/>
+</class_>
+<name>
+<val>name VARCHAR(15)</val>
+</name>
+</Property>
+<Property id="712a4b13-95dc-11ec-9833-e114922c2b20">
+<class_>
+<ref refid="2e52b99f-95dc-11ec-8cc4-e114922c2b20"/>
+</class_>
+<name>
+<val>+ style VARCHAR(23)</val>
+</name>
+</Property>
+<DependencyItem id="86878d14-95dc-11ec-b288-e114922c2b20">
+<diagram>
+<ref refid="e9a1f10b-9492-11ec-8f24-27e92bca9c27"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<subject>
+<ref refid="87bd6398-95dc-11ec-a288-e114922c2b20"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 1069.8444944052378, 498.92669855859117)</val>
+</matrix>
+<points>
+<val>[(94.32127170788976, -36.71566281246692), (48.11017885771548, -36.715662812466974), (48.11017885771548, 0.0), (1.1555055947621895, 0.0)]</val>
+</points>
+<head-connection>
+<ref refid="2e531fa8-95dc-11ec-aad6-e114922c2b20"/>
+</head-connection>
+<tail-connection>
+<ref refid="5b726dec-9499-11ec-a205-27e92bca9c27"/>
+</tail-connection>
+<auto_dependency>
+<val>1</val>
+</auto_dependency>
+</DependencyItem>
+<Dependency id="87bd6398-95dc-11ec-a288-e114922c2b20">
+<client>
+<ref refid="5b7201bc-9499-11ec-b7af-27e92bca9c27"/>
+</client>
+<presentation>
+<reflist>
+<ref refid="86878d14-95dc-11ec-b288-e114922c2b20"/>
+</reflist>
+</presentation>
+<supplier>
+<ref refid="2e52b99f-95dc-11ec-8cc4-e114922c2b20"/>
+</supplier>
+</Dependency>
 </gaphor>

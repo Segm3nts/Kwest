@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
     res.sendFile('index', { title: 'Kwest' });
 });
 
+/* GET compendium page. */
+router.get('/view/:id', function(req, res, next) {
+	res.sendFile('compendium.html', { root: __dirname + "/../public", title: "Kwest: Compendium" });
+});
+
 module.exports = router;

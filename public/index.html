@@ -13,27 +13,44 @@
 			<img src="images/kwest.png" alt="Kwest">
 		</div>
 		<div id="cards">
+			<!-- A special card if settings are in order -->
+			<div class="card" v-if="isSettings">
+				<p class="title">
+					{{ settings.title }}
+				</p>
+				<hr />
+				<p class="dm">
+					Dungeon Master: {{ settings.dm }}
+				</p>
+				<p class="date">
+					Compendium started: {{ settings.timestamp }}
+				</p>
+				<br /><br /><br /><br />
+				<a class="button">
+					Access compendium
+				</a>
+				<a class="button">
+					Settings
+				</a>
+			</div>
 			<!-- A list of "cards" for each registered compendium -->
-			<div class="card" v-for="cmp in compendia" :key="cmp.id">
+			<div class="card" v-for="cmp in compendia" :key="cmp.c_id">
 				<p class="title">
 					{{ cmp.name }}
 				</p>
 				<hr />
-				<p class="players">
-					Players: {{ cmp.players }}
-				</p>
 				<p class="dm">
 					Dungeon Master: {{ cmp.dm }}
 				</p>
 				<p class="date">
-					Compendium started: {{ cmp.started }}
+					Compendium started: {{ cmp.timestamp }}
 				</p>
-				<br />
-				<a class="button" v-bind:href="'/compendium/' + cmp.id">
+				<br /><br /><br /><br />
+				<a class="button" v-bind:href="'/view/' + cmp.c_id">
 					Access compendium
 				</a>
-				<a class="button" v-bind:href="'/admin/login/' + cmp.id">
-					Login as dungeon master
+				<a class="button" v-bind:onclick="'getCompendiumSettings(' + cmp.c_id + ')'">
+					Settings
 				</a>
 			</div>
 		</div>
@@ -44,7 +61,7 @@
 				Looking to create your own compendium? Start one here.
 			</h2>
 			<br />
-			<a class="button" v-bind:href="/admin/create/">
+			<a class="button" href="/compendium/new">
 				Create a new compendium
 			</a>
 		</div>

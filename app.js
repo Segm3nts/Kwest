@@ -12,11 +12,14 @@ var indexRouter = require('./routes/index');
 var entryRouter = require('./routes/entry');
 var journalRouter = require('./routes/journal');
 var compendiumRouter = require('./routes/compendium');
+var playersRouter = require('./routes/players');
 
 // Initialise MySQL connection pool
 var dbConnectionPool = mysql.createPool({
+  user: "root",
   host: "localhost",
-  database: "kwest"
+  database: "kwest",
+  password: "hidden_bread"
 });
 
 // Create an Express instance
@@ -52,6 +55,7 @@ app.use('/', indexRouter);
 app.use('/entry', entryRouter);
 app.use('/journal', journalRouter);
 app.use('/compendium', compendiumRouter);
+app.use('/players', playersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
