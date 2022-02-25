@@ -35,7 +35,9 @@ function getCompendiumSettings(c_id) {
 	// Get most of the deets
 	for (let i = 0; i < vueinst.compendia.length; i++)
 	{
-		if (i == c_id) {
+		console.log("Looping looping");
+		if (vueinst.compendia[i]["c_id"] == c_id) {
+			console.log("All day long");
 			vueinst.settings = vueinst.compendia[i];
 		}
 	}
@@ -44,8 +46,8 @@ function getCompendiumSettings(c_id) {
 	/* 4. Handle response (callback function) */
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-		    console.log(this.responseText);
-		    ret_obj = JSON.parse(this.response);
+		    vueinst.settings["players"] = JSON.parse(this.response);
+		    vueinst.isSettings = true;
 		}
 	};
 	/* 2. Open connection */

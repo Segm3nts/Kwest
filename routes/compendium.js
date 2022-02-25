@@ -98,7 +98,7 @@ router.get("/settings/:c_id", function(req, res, next) {
             res.sendStatus(500);
             return;
         }
-        var query = "SELECT * FROM Compendia INNER JOIN Players ON Compendia.c_id = Players.c_id WHERE Compendia.c_id = ?;";
+        var query = "SELECT Players.name, p_id, realname FROM Compendia INNER JOIN Players ON Compendia.c_id = Players.c_id WHERE Compendia.c_id = ?;";
         connection.query(query, [req.params.c_id], function(err, rows, fields) {
             connection.release();
             if (err) {
