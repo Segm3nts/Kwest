@@ -83,22 +83,23 @@ function getCompendiumSettings(c_id) {
 }
 
 function updateCompendium(compendium) {
-	console.log(compendium);
 	/* 1. Create new AJAX request */
 	var xhttp = new XMLHttpRequest();
 	/* 4. Handle response (callback function) */
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-		    vueinst.settings["players"] = JSON.parse(this.response);
+			console.log(this.response);
+		    //vueinst.settings["players"] = JSON.parse(this.response);
 		    vueinst.isSettings = true;
 		}
 	};
 	/* 2. Open connection */
 	xhttp.open("POST", "/compendium/settings/update", true);
 	/* 3. Send request */
-	xhttp.send(compendium);
+	xhttp.setRequestHeader("Content-type", "application/json");
+	console.log(JSON.stringify(compendium));
+	xhttp.send(JSON.stringify(compendium));
 }
 
-// Check again for new compendia every 10 seconds
+// Check for new compendia
 getCompendia();
-setInterval(getCompendia, 10000);

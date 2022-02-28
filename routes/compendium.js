@@ -116,6 +116,7 @@ router.post("/settings/update", function(req, res, next) {
 	req.pool.getConnection(function(err, connection)
     {
         if (err) {
+        	console.log("Step 1");
             res.sendStatus(500);
             return;
         }
@@ -123,7 +124,7 @@ router.post("/settings/update", function(req, res, next) {
         var query = "UPDATE Compendia SET dm = ?, name = ? WHERE c_id = ?;";
         connection.query(query, [req.body.dm, req.body.name, req.body.c_id], function(err, rows, fields) {
             if (err) {
-            	console.log(err)
+            	console.log("Step 2")
                 res.sendStatus(500);
                 return;
             }
@@ -131,9 +132,8 @@ router.post("/settings/update", function(req, res, next) {
         // Remove players
         var query = "DELETE FROM Players WHERE c_id = ? AND name != 'Dungeon Master';";
         connection.query(query, [req.body.c_id], function(err, rows, fields) {
-            connection.release();
             if (err) {
-            	console.log(err)
+            	console.log("Step 3")
                 res.sendStatus(500);
                 return;
             }
@@ -142,15 +142,15 @@ router.post("/settings/update", function(req, res, next) {
         for (let i = 0; i < req.body.players.length; i++) {
         	var query = "INSERT INTO Players (c_id, name, realname) VALUES (?, ?, ?);";
 		    connection.query(query, [req.body.c_id, req.body.players[i].name, req.body.players[i].realname], function(err, rows, fields) {
-		        connection.release();
 		        if (err) {
-		        	console.log(err)
+		        	console.log("Step 4")
 		            res.sendStatus(500);
 		            return;
 		        }
-		    	res.sendStatus(200);
 		    });
         }
+        connection.release();
+        res.sendStatus(200);
     });
 });
 

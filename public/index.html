@@ -19,12 +19,13 @@
 				<label for="setTitle">
 					Compendium Name:
 				</label>
-				<input type="text" id="setTitle" name="setTitle" class="title" v-bind:value="settings.name" />
+				<input type="text" id="setTitle" name="setTitle" class="title" v-model="settings.name" />
+				<!-- <input type="text" id="setTitle" name="setTitle" class="title" v-bind:value="settings.name" /> -->
 				<hr />
 				<label for="setDm">
 					Dungeon Master:
 				</label>
-				<input type="text" id="setDm" name="setDm" v-bind:value="settings.dm" />
+				<input type="text" id="setDm" name="setDm" v-model="settings.dm" />
 				<table id="setPlayers">
 					<tr>
 						<th>
@@ -36,10 +37,10 @@
 					</tr>
 					<tr v-for="player in settings.players" :key="player.p_id">
 						<td>
-							<input type="text" v-bind:value="player.name" />
+							<input type="text" v-model="player.name" />
 						</td>
 						<td>
-							<input type="text" v-bind:value="player.realname" />
+							<input type="text" v-model="player.realname" />
 						</td>
 						<td>
 							<button v-bind:onclick="'remove(' + player.p_id + ')'">
