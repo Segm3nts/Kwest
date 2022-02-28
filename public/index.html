@@ -4,6 +4,7 @@
     	<title>Kwest</title>
     	<meta charset="utf-8">
     	<link rel="stylesheet" href="stylesheets/style.css">
+    	<script src="https://kit.fontawesome.com/a1919cc9b1.js" crossorigin="anonymous"></script>
     	<script src="https://unpkg.com/vue@3"></script>
 		<script src="javascripts/index.js" defer></script>
 	</head>
@@ -15,22 +16,51 @@
 		<div id="cards">
 			<!-- A special card if settings are in order -->
 			<div class="specialcard" v-if="isSettings">
-				<p class="title">
-					{{ settings.title }}
-				</p>
+				<label for="setTitle">
+					Compendium Name:
+				</label>
+				<input type="text" id="setTitle" name="setTitle" class="title" v-bind:value="settings.name" />
 				<hr />
-				<p class="dm">
-					Dungeon Master: {{ settings.dm }}
-				</p>
-				<p class="date">
-					Compendium started: {{ settings.timestamp }}
-				</p>
-				<br /><br /><br /><br />
-				<a class="button">
-					Access compendium
+				<label for="setDm">
+					Dungeon Master:
+				</label>
+				<input type="text" id="setDm" name="setDm" v-bind:value="settings.dm" />
+				<table id="setPlayers">
+					<tr>
+						<th>
+							Player Name
+						</th>
+						<th>
+							Real Name
+						</th>
+					</tr>
+					<tr v-for="player in settings.players" :key="player.p_id">
+						<td>
+							<input type="text" v-bind:value="player.name" />
+						</td>
+						<td>
+							<input type="text" v-bind:value="player.realname" />
+						</td>
+						<td>
+							<button v-bind:onclick="'remove(' + player.p_id + ')'">
+								<i class="fa-solid fa-trash"></i>
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button v-on:click="create()">
+								<i class="fa-solid fa-circle-plus"></i>
+							</button>
+						</td>
+					</tr>
+				</table>
+				<br />
+				<a class="button" v-on:click="save()">
+					Save
 				</a>
-				<a class="button">
-					Settings
+				<a class="button" v-on:click="close()">
+					Close
 				</a>
 			</div>
 			<!-- A list of "cards" for each registered compendium -->

@@ -13,8 +13,36 @@ let vueinst = Vue.createApp({
 			isSettings: false,
 			settings: {}
 		};
+	},
+	methods: {
+		create(event) {
+			this.settings.players.push({
+				name: "Name",
+				realname: "Real Name"
+			});
+		},
+		remove(p_id) {
+			for (let i = 0; i < this.settings.players.length; i++) {
+				if (this.settings.players[i].p_id == p_id) {
+					this.settings.players.splice(i, 1);
+				}
+			}
+		},
+		save(event) {
+			updateCompendium(this.settings);
+		},
+		close(event) {
+			this.isSettings = false;
+		}
 	}
 }).mount('#cards');
+
+// Rerouting function
+function remove(p_id) {
+	vueinst.remove(p_id);
+}
+
+// AJAX functions
 
 function getCompendia() {
 	/* 1. Create new AJAX request */
@@ -35,9 +63,7 @@ function getCompendiumSettings(c_id) {
 	// Get most of the deets
 	for (let i = 0; i < vueinst.compendia.length; i++)
 	{
-		console.log("Looping looping");
 		if (vueinst.compendia[i]["c_id"] == c_id) {
-			console.log("All day long");
 			vueinst.settings = vueinst.compendia[i];
 		}
 	}
@@ -54,6 +80,23 @@ function getCompendiumSettings(c_id) {
 	xhttp.open("GET", "/compendium/settings/" + c_id, true);
 	/* 3. Send request */
 	xhttp.send();
+}
+
+function updateCompendium(compendium) {
+	console.log(compendium);
+	/* 1. Create new AJAX request */
+	var xhttp = new XMLHttpRequest();
+	/* 4. Handle response (callback function) */
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		    vueinst.settings["players"] = JSON.parse(this.response);
+		    vueinst.isSettings = true;
+		}
+	};
+	/* 2. Open connection */
+	xhttp.open("POST", "/compendium/settings/update", true);
+	/* 3. Send request */
+	xhttp.send(compendium);
 }
 
 // Check again for new compendia every 10 seconds
