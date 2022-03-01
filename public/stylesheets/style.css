@@ -121,13 +121,23 @@ h2 {
 
 #compendium {
 	width: 33%;
+	max-width: 28em;
 	height: 100%;
-	float: left;
 	background-color: lightpink;
 	display: flex;
+	float: left;
 	flex-direction: column;
 	text-align: center;
-	vertical-align: center;
+	vertical-align: middle;
+}
+
+#information {
+	width: 66%;
+	min-width: 28em;
+	float: right;
+	height: 100%;
+	background-color: lightblue;
+	text-align: center;
 }
 
 .journal {
@@ -136,18 +146,11 @@ h2 {
 	min-height: 5em;
 	margin-bottom: 1em;
 	text-align: center;
-	vertical-align: center;
+	vertical-align: middle;
 }
 
 .journal:hover {
 	background-color: #b80;
-}
-
-#information {
-	width: 66%;
-	height: 100%;
-	float: right;
-	background-color: lightblue;
 }
 
 form {
@@ -168,11 +171,56 @@ form input {
 	display: inline;
 	background: #333;
 	padding: 0.5em;
-	margin-bottom: 1.5em;
+	margin-bottom: 0.5em;
+	width: 100%;
+	display: inline-block;
 }
 
 .scroll {
 	height: 100%;
 	width: 100%;
 	overflow: scroll;
+}
+
+.magic {
+	font-family: "Magic Cards";
+	border: 0;
+}
+
+textarea {
+	width: 90%;
+	height: 7em;
+	font-size: 1.5em;
+	background: none;
+}
+
+.heading {
+	font-size: 1.5em;
+}
+
+.icon {
+	font-size: 2.5em;
+}
+
+.journaltitle {
+	background: none;
+	font-size: 3em;
+	text-align: center;
+}
+
+.entrytitle {
+	background: none;
+	font-size: 2em;
+}
+
+.entry {
+	background: #a83;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.entry textarea {
+	height: 4em;
 }

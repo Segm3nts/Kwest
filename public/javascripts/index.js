@@ -97,7 +97,6 @@ function updateCompendium(compendium) {
 	xhttp.open("POST", "/compendium/settings/update", true);
 	/* 3. Send request */
 	xhttp.setRequestHeader("Content-type", "application/json");
-	console.log(JSON.stringify(compendium));
 	xhttp.send(JSON.stringify(compendium));
 }
 

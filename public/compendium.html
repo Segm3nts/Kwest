@@ -24,15 +24,39 @@
 				</div>
 				<!-- A list of all the journals in the compedium -->
 				<div class="scroll">
-					<div class=journal v-for="jrnl in journals" :key="jrnl.j_id" v-bind:onclick="'journalInfo(' + jrnl.j_id + ')'">
-						<i v-bind:class="'fa-solid ' + jrnl.style"></i>
-						<span class="heading">{{ jrnl.title }}</span>
+					<div class=journal v-for="jrnl in journals" :key="jrnl.j_id" v-bind:onclick="'getEntries(' + jrnl.j_id + ')'">
+						<i v-bind:class="'fa-solid ' + jrnl.style + ' icon'"></i>
+						<span class="heading magic">{{ jrnl.title }}</span>
 					</div>
 				</div>
 			</div>
 			<div id=information>
+				<div class="selector">
+					<a class="smallbutton" onclick="saveTitleDescriptionIcon()">
+						<i class="fa-solid fa-floppy-disk"></i>
+					</a>
+				</div>
 				<!-- The journal, showing all the entries that tag it -->
-				<h2>{{ focus.title }}</h2>
+				<input type="text" class="journaltitle magic" v-model="focus.title" />
+				<textarea class="magic" v-model="focus.description"></textarea>
+				<br />
+				<label for="icons_drop">Icon:</label>
+				<select name="icons_drop" id="icons_drop" v-model="focus.style">
+					<option v-for="icon in icons" v-bind:value="icon.style">
+						{{ icon.name }}
+					</option>
+				</select>
+				<hr />
+				<div class="selector">
+					<a class="smallbutton" v-bind:onclick="'newEntry(' + focus.j_id + ')'">
+						<i class="fa-solid fa-circle-plus"></i>
+					</a>
+				</div>
+				<div class="entry" v-for="entry in entries">
+					<input type="text" class="entrytitle magic" v-model="entry.title">
+					{{ entry.timestamp }}
+					<textarea class="magic" v-model="entry.content"></textarea>
+				</div>
 			</div>
 		</div>
 	</body>
