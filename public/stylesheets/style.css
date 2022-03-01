@@ -37,6 +37,20 @@ a {
 	cursor: pointer;
 }
 
+.smallbutton {
+	background-color: #0a3;
+	border: 1em #0c4;
+	color: white;
+	text-align: center;
+	content: 8em;
+	padding: 0.2em;
+	margin: 1em;
+	border-radius: 0.5em;
+	font-size: 1.5em;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 .cards {
 	display: inline;
 }
@@ -118,8 +132,15 @@ h2 {
 
 .journal {
 	width: 100%;
-	background-color: lightyellow;
+	background-color: #ea0;
 	min-height: 5em;
+	margin-bottom: 1em;
+	text-align: center;
+	vertical-align: center;
+}
+
+.journal:hover {
+	background-color: #b80;
 }
 
 #information {
@@ -141,4 +162,17 @@ form input {
 	border-radius: 1em;
 	font-size: 2em;
 	text-align: center;
+}
+
+.selector {
+	display: inline;
+	background: #333;
+	padding: 0.5em;
+	margin-bottom: 1.5em;
+}
+
+.scroll {
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
 }

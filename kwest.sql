@@ -1,3 +1,4 @@
+-- Set the database up
 DROP SCHEMA IF EXISTS kwest;
 CREATE SCHEMA kwest;
 USE kwest;
@@ -54,3 +55,12 @@ CREATE TABLE Tags (
 	FOREIGN KEY (e_id) REFERENCES Entries (e_id),
 	FOREIGN KEY (j_id) REFERENCES Journals (j_id)
 );
+
+-- Create the icons
+INSERT INTO Icons (name, style) VALUES ("Person", "fa-user");
+INSERT INTO Icons (name, style) VALUES ("House", "fa-house-chimney");
+INSERT INTO Icons (name, style) VALUES ("Map", "fa-map-location-dot");
+INSERT INTO Icons (name, style) VALUES ("Compass", "fa-compass");
+INSERT INTO Icons (name, style) VALUES ("Book", "fa-book");
+INSERT INTO Icons (name, style) VALUES ("Running", "fa-person-running");
+INSERT INTO Icons (name, style) VALUES ("Potion", "fa-flask-round-potion");
