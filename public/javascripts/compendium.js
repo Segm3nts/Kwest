@@ -8,7 +8,7 @@ let vueinst = Vue.createApp({
 					title: "A Scholary Necromancer",
 					description: "A necromancer by the Old Al Well is studying the prolonged effects of using necrotic powers on earthen habitat. Unfortunately, more and more of his undead test subjects are breaking out and causing chaos, which of course we need to clean up.",
 					timestamp: "21122021",
-					icon_style: "fa-book"
+					style: "fa-book"
 				}*/
 			],
 			focus: {
@@ -114,6 +114,7 @@ function saveTitleDescriptionIcon() {
 	/* 4. Handle response (callback function) */
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
+		    console.log(this.response);
 		    //getJournals();
 		}
 	};
