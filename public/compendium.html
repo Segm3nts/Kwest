@@ -31,14 +31,9 @@
 				</div>
 			</div>
 			<div id=information>
-				<div class="selector">
-					<a class="smallbutton" onclick="saveTitleDescriptionIcon()">
-						<i class="fa-solid fa-floppy-disk"></i>
-					</a>
-				</div>
 				<!-- The journal, showing all the entries that tag it -->
 				<input type="text" class="journaltitle magic" v-model="focus.title" />
-				<textarea class="magic" v-model="focus.description"></textarea>
+				<textarea class="journaldescription magic" v-model="focus.description"></textarea>
 				<br />
 				<label for="icons_drop">Icon:</label>
 				<select name="icons_drop" id="icons_drop" v-model="focus.style">
@@ -46,6 +41,9 @@
 						{{ icon.name }}
 					</option>
 				</select>
+				<a class="smallbutton" onclick="saveTitleDescriptionIcon()">
+					<i class="fa-solid fa-floppy-disk"></i>
+				</a>
 				<hr />
 				<div class="selector">
 					<a class="smallbutton" v-bind:onclick="'newEntry(' + focus.j_id + ')'">
