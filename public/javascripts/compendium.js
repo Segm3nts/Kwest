@@ -27,6 +27,9 @@ let vueinst = Vue.createApp({
 	},
 	methods: {
 		parseTimestamp(timestamp) {
+			if (timestamp == undefined) {
+				return;
+			}
 			// Parse the string: date
 			var day = parseInt(timestamp[8] + timestamp[9]);
 			var month = parseInt(timestamp[5] + timestamp[6]);
