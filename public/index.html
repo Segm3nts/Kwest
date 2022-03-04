@@ -58,10 +58,13 @@
 					</tr>
 				</table>
 				<br />
-				<a class="button" v-on:click="save()">
+				<a class="bigbutton" v-on:click="save()">
 					Save
 				</a>
-				<a class="button" v-on:click="close()">
+				<a class="bigbutton" v-on:click="remove()" style="color: red">
+					DELETE
+				</a>
+				<a class="bigbutton" v-on:click="close()">
 					Close
 				</a>
 			</div>
@@ -78,10 +81,10 @@
 					Compendium started: {{ cmp.timestamp }}
 				</p>
 				<br /><br /><br /><br />
-				<a class="button" v-bind:href="'/view/' + cmp.c_id">
+				<a class="bigbutton" v-bind:href="'/view/' + cmp.c_id">
 					Access compendium
 				</a>
-				<a class="button" v-bind:onclick="'getCompendiumSettings(' + cmp.c_id + ')'">
+				<a class="bigbutton" v-bind:onclick="'getCompendiumSettings(' + cmp.c_id + ')'">
 					Settings
 				</a>
 			</div>
@@ -93,7 +96,7 @@
 				Looking to create your own compendium? Start one here.
 			</h2>
 			<br />
-			<a class="button" href="/compendium/new">
+			<a class="bigbutton" href="/compendium/new">
 				Create a new compendium
 			</a>
 		</div>

@@ -69,6 +69,50 @@ router.get("/get", function(req, res, next) {
     });
 });
 
+// DELETE a compendium
+router.post("/delete", function(req, res, next) {
+	req.pool.getConnection(function(err, connection)
+    {
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        // Check if the password matches
+        var query = "SELECT password FROM Compendia WHERE c_id = ?;";
+        connection.query(query, [req.body.c_id], function(err, rows, fields) {
+            if (err) {
+            	console.log(err)
+                res.sendStatus(500);
+                return;
+            }
+            if (rows[0]["password"] == req.body.password) {
+            	// Delete the players
+				var query = "DELETE FROM Players WHERE c_id = ?;";
+				connection.query(query, [req.body.c_id], function(err, rows, fields) {
+					if (err) {
+						console.log(err)
+						res.sendStatus(500);
+						return;
+					}
+					// Delete the compendium
+					var query = "DELETE FROM Compendia WHERE c_id = ?;";
+					connection.query(query, [req.body.c_id], function(err, rows, fields) {
+						connection.release();
+						if (err) {
+							console.log(err)
+							res.sendStatus(500);
+							return;
+						}
+						res.sendStatus(200);
+					});
+				});
+            } else {
+            	res.sendStatus(401);
+            }
+        });
+    });
+});
+
 // GET the bare compendium options (for a dropdown)
 router.get("/options", function(req, res, next) {
 	req.pool.getConnection(function(err, connection)

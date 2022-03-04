@@ -33,6 +33,34 @@ let vueinst = Vue.createApp({
 		},
 		close(event) {
 			this.isSettings = false;
+		},
+		remove(event) {
+			if (confirm("Are you sure you want to DELETE this compendium?")) {
+				var id = this.settings.c_id;
+				var pwd = prompt("Please enter the compendium password to DELETE this compendium");
+				/* 1. Create new AJAX request */
+				var xhttp = new XMLHttpRequest();
+				/* 4. Handle response (callback function) */
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						vueinst.isSettings = false;
+						for (let i = 0; i < vueinst.compendia.length; i++) {
+							if (vueinst.compendia[i].c_id == id) {
+								vueinst.compendia.splice(i, 1);
+								break;
+							}
+						}
+					}
+				};
+				/* 2. Open connection */
+				xhttp.open("POST", "/compendium/delete", true);
+				/* 3. Send request */
+				xhttp.setRequestHeader("Content-type", "application/json");
+				xhttp.send(JSON.stringify({
+					c_id: id,
+					password: pwd
+				}));
+			}
 		}
 	}
 }).mount('#cards');
