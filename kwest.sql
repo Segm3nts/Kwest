@@ -44,7 +44,7 @@ CREATE TABLE Entries (
 	e_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	title TINYTEXT,
 	timestamp TIMESTAMP NOT NULL,
-	content TEXT NOT NULL,
+	content TEXT,
 	PRIMARY KEY (e_id)
 );
 

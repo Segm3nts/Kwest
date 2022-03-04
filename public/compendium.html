@@ -50,9 +50,9 @@
 				<a class="smallbutton" v-bind:onclick="'newEntry(' + focus.j_id + ')'">
 					<i class="fa-solid fa-circle-plus"></i>
 				</a>
-				<div class="entry" v-for="entry in entries">
+				<div class="entry" v-for="entry in entries" :key="entry.e_id">
 					<input type="text" class="entrytitle magic" v-model="entry.title">
-					{{ entry.timestamp }}
+					{{ parseTimestamp(entry.timestamp) }}
 					<textarea class="entrycontent magic" v-model="entry.content"></textarea>
 					<br />
 					<a class="smallbutton" v-bind:onclick="'saveEntry(' + entry.e_id + ')'">
