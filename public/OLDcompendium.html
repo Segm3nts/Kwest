@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>Kwest</title>
+    	<meta charset="utf-8">
+    	<link rel="stylesheet" href="../../stylesheets/OLDstyle.css">
+    	<script src="https://kit.fontawesome.com/a1919cc9b1.js" crossorigin="anonymous"></script>
+    	<script src="https://unpkg.com/vue@3"></script>
+		<script src="../../javascripts/compendium.js" defer></script>
+	</head>
+	<body>
+		<div class=header>
+			<!-- Header with "Kwest" in the middle -->
+			<a href="/">
+				<img src="../../images/kwest.png" alt="Kwest">
+			</a>
+		</div>
+		<br />
+		<div id=mount class="paned">
+			<div id=compendium>
+				<div class="selector">
+					<a class="smallbutton" onclick="newJournal()">
+						<i class="fa-solid fa-circle-plus"></i>
+					</a>
+					<input type="text" placeholder="Search..." />
+				</div>
+				<!-- A list of all the journals in the compedium -->
+				<div class="scroll">
+					<div class=journal v-for="jrnl in journals" :key="jrnl.j_id" v-bind:onclick="'getEntries(' + jrnl.j_id + ')'">
+						<i v-bind:class="'fa-solid ' + jrnl.style + ' icon'"></i>
+						<span class="heading magic">{{ jrnl.title }}</span>
+					</div>
+				</div>
+			</div>
+			<div id=information>
+				<!-- The journal, showing all the entries that tag it -->
+				<input type="text" class="journaltitle magic" v-model="focus.title" />
+				<textarea class="journaldescription magic" v-model="focus.description"></textarea>
+				<br />
+				<label for="icons_drop">Icon:</label>
+				<select name="icons_drop" id="icons_drop" v-model="focus.style">
+					<option v-for="icon in icons" v-bind:value="icon.style">
+						{{ icon.name }}
+					</option>
+				</select>
+				<a class="smallbutton" onclick="saveTitleDescriptionIcon()">
+					<i class="fa-solid fa-floppy-disk"></i>
+				</a>
+				{{ parseTimestamp(focus.timestamp) }}
+				<hr />
+				<a class="smallbutton" v-bind:onclick="'newEntry(' + focus.j_id + ')'">
+					<i class="fa-solid fa-circle-plus"></i>
+				</a>
+				<div class="entry" v-for="entry in entries" :key="entry.e_id">
+					<input type="text" class="entrytitle magic" v-model="entry.title">
+					{{ parseTimestamp(entry.timestamp) }}
+					<textarea class="entrycontent magic" v-model="entry.content"></textarea>
+					<br />
+					<a class="smallbutton" v-bind:onclick="'saveEntry(' + entry.e_id + ')'">
+						<i class="fa-solid fa-floppy-disk"></i>
+					</a>
+					<a class="smallbutton" v-bind:onclick="'deleteEntry(' + entry.e_id + ')'">
+						<i class="fa-solid fa-trash"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -11,47 +11,68 @@
 	<body>
 		<div class=header>
 			<!-- Header with "Kwest" in the middle -->
+			<span class="checkbox">
+				Show journals
+				<input type="checkbox" onclick="showJournals()" checked />
+			</span>
 			<a href="/">
 				<img src="../images/kwest.png" alt="Kwest">
 			</a>
 		</div>
 		<br />
-		<div id=paned>
-			<div id=compendium>
-				<div class="selector">
+		<div id="mount">
+			<ul class="compendium" v-if="showJournal">
+				<li>
 					<a class="smallbutton" onclick="newJournal()">
-						<i class="fa-solid fa-circle-plus"></i>
+						<i class="fa-solid fa-circle-plus buttonicon"></i>
+						<span class="magic">New Journal</span>
 					</a>
-					<input type="text" placeholder="Search..." />
-				</div>
-				<!-- A list of all the journals in the compedium -->
-				<div class="scroll">
-					<div class=journal v-for="jrnl in journals" :key="jrnl.j_id" v-bind:onclick="'getEntries(' + jrnl.j_id + ')'">
+				</li>
+				<li v-for="jrnl in journals" v-bind:onclick="'getEntries(' + jrnl.j_id + ')'">
+					<a class="paneitem">
 						<i v-bind:class="'fa-solid ' + jrnl.style + ' icon'"></i>
 						<span class="heading magic">{{ jrnl.title }}</span>
-					</div>
-				</div>
-			</div>
-			<div id=information>
+					</a>
+				</li>
+			</ul>
+			<div v-bind:class="showJournal ? 'information' : 'largeinformation'">
 				<!-- The journal, showing all the entries that tag it -->
+				<br />
+				{{ parseTimestamp(focus.timestamp) }}
 				<input type="text" class="journaltitle magic" v-model="focus.title" />
 				<textarea class="journaldescription magic" v-model="focus.description"></textarea>
 				<br />
+				<a class="smallbutton" v-bind:onclick="'newEntry(' + focus.j_id + ')'">
+					<i class="fa-solid fa-circle-plus buttonicon"></i>
+					<span class="magic">New Entry</span>
+				</a>
+				<a class="smallbutton" onclick="saveTitleDescriptionIcon()">
+					<i class="fa-solid fa-floppy-disk buttonicon"></i>
+					<span class="magic">Save Journal</span>
+				</a>
 				<label for="icons_drop">Icon:</label>
 				<select name="icons_drop" id="icons_drop" v-model="focus.style">
 					<option v-for="icon in icons" v-bind:value="icon.style">
 						{{ icon.name }}
 					</option>
 				</select>
-				<a class="smallbutton" onclick="saveTitleDescriptionIcon()">
-					<i class="fa-solid fa-floppy-disk"></i>
-				</a>
-				{{ parseTimestamp(focus.timestamp) }}
 				<hr />
-				<a class="smallbutton" v-bind:onclick="'newEntry(' + focus.j_id + ')'">
-					<i class="fa-solid fa-circle-plus"></i>
-				</a>
-				<div class="entry" v-for="entry in entries" :key="entry.e_id">
+				<ul class="entry" v-for="entry in entries" :key="entry.e_id">
+					<li>
+						<input type="text" class="entrytitle magic" v-model="entry.title" />
+						{{ parseTimestamp(entry.timestamp) }}
+						<textarea class="entrycontent magic" v-model="entry.content"></textarea>
+						<a class="smallbutton" v-bind:onclick="'saveEntry(' + entry.e_id + ')'">
+							<i class="fa-solid fa-floppy-disk buttonicon"></i>
+							<span class="magic">Save Entry</span>
+						</a>
+						<a class="smallbutton" v-bind:onclick="'deleteEntry(' + entry.e_id + ')'">
+							<i class="fa-solid fa-trash buttonicon"></i>
+							<span class="magic">Delete Entry</span>
+						</a>
+					</li>
+				</ul>
+				<!--<div class="entry" v-for="entry in entries" :key="entry.e_id">
 					<input type="text" class="entrytitle magic" v-model="entry.title">
 					{{ parseTimestamp(entry.timestamp) }}
 					<textarea class="entrycontent magic" v-model="entry.content"></textarea>
@@ -62,7 +83,7 @@
 					<a class="smallbutton" v-bind:onclick="'deleteEntry(' + entry.e_id + ')'">
 						<i class="fa-solid fa-trash"></i>
 					</a>
-				</div>
+				</div>-->
 			</div>
 		</div>
 	</body>

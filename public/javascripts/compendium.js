@@ -2,6 +2,7 @@
 let vueinst = Vue.createApp({
 	data: function() {
 		return {
+			showJournal: true,
 			journals: [
 				/*{
 					j_id: 4,
@@ -38,9 +39,9 @@ let vueinst = Vue.createApp({
 			var hours = parseInt(timestamp[11] + timestamp[12]);
 			var minutes = parseInt(timestamp[14] + timestamp[15]);
 			var seconds = parseInt(timestamp[17] + timestamp[18]);
-			// Timezone: +10:30
-			hours += parseInt(timestamp[11] + timestamp[12]) + 10;
-			minutes += parseInt(timestamp[17] + timestamp[18]) + 30;
+			// Timezone: +9:30
+			hours += 10;
+			minutes += 30;
 			if (minutes > 59) {
 				hours++;
 				minutes -= 60;
@@ -58,10 +59,10 @@ let vueinst = Vue.createApp({
 					month++;
 					day -= 31;
 				}
-				if (month > 12) {
-					year++;
-					month -= 12;
-				}
+			}
+			if (month > 12) {
+				year++;
+				month -= 12;
 			}
 			// Suffix
 			if (hours < 12) {
@@ -121,7 +122,15 @@ let vueinst = Vue.createApp({
 			return hours + ":" + minutes + ":" + seconds + suffix + ", " + day + " " + month + " " + year
 		}
 	}
-}).mount('#paned');
+}).mount('#mount');
+
+function showJournals() {
+	if (vueinst.showJournal) {
+		vueinst.showJournal = false;
+	} else {
+		vueinst.showJournal = true;
+	}
+}
 
 function getJournals() {
 	/* 1. Create new AJAX request */
@@ -146,6 +155,9 @@ function getEntries(j_id) {
 		if (this.readyState == 4 && this.status == 200) {
 		    for (let i = 0; i < vueinst.journals.length; i++) {
 		    	if (vueinst.journals[i].j_id == j_id) {
+		    		if (vueinst.showJournal == false) {
+						vueinst.showJournal = true;
+					}
 		    		vueinst.focus = vueinst.journals[i];
 		    		break;
 		    	}

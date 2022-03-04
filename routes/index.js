@@ -12,4 +12,10 @@ router.get('/view/:id', function(req, res, next) {
 	res.sendFile('compendium.html', { root: __dirname + "/../public", title: "Kwest: Compendium" });
 });
 
+/* GET old compendium page. */
+router.get('/view/old/:id', function(req, res, next) {
+	res.cookie("c_id", req.params.id);
+	res.sendFile('OLDcompendium.html', { root: __dirname + "/../public", title: "Kwest: Compendium" });
+});
+
 module.exports = router;
