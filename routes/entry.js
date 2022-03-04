@@ -57,4 +57,31 @@ router.post("/save", function(req, res, next) {
     });
 });
 
+router.get("/delete/:e_id", function(req, res, next) {
+	req.pool.getConnection(function(err, connection)
+    {
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        // Remove all tags on the entry
+        var query = "DELETE FROM Tags WHERE e_id = ?;";
+        connection.query(query, [req.params.e_id], function(err, rows, fields) {
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            // Remove the entry
+		    var query = "DELETE FROM Entries WHERE e_id = ?;";
+		    connection.query(query, [req.params.e_id], function(err, rows, fields) {
+		        if (err) {
+		            res.sendStatus(500);
+		            return;
+		        }
+		        res.sendStatus(200);
+		    });
+        });
+    });
+});
+
 module.exports = router;

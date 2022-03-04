@@ -138,10 +138,32 @@ function saveEntry(e_id) {
 	for (var i = 0; i < vueinst.entries.length; i++) {
 		if (vueinst.entries[i].e_id == e_id) {
 			break;
+		}
 	}
 	/* 3. Send request */
 	xhttp.setRequestHeader("Content-type", "application/json");
 	xhttp.send(JSON.stringify(vueinst.entries[i]));
+}
+
+function deleteEntry(e_id) {
+	if (confirm("Are you sure you want to delete this entry?")) {
+		/* 1. Create new AJAX request */
+		var xhttp = new XMLHttpRequest();
+		/* 4. Handle response (callback function) */
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				for (let i = 0; i < vueinst.entries.length; i++) {
+					if (vueinst.entries[i].e_id == e_id) {
+						vueinst.entries.splice(i, 1);
+					}
+				}
+			}
+		};
+		/* 2. Open connection */
+		xhttp.open("GET", "/entry/delete/" + e_id, true);
+		/* 3. Send request */
+		xhttp.send();
+	}
 }
 
 getJournals();
