@@ -114,8 +114,6 @@ function saveTitleDescriptionIcon() {
 	/* 4. Handle response (callback function) */
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-		    console.log(this.response);
-		    //getJournals();
 		}
 	};
 	/* 2. Open connection */
@@ -123,6 +121,27 @@ function saveTitleDescriptionIcon() {
 	/* 3. Send request */
 	xhttp.setRequestHeader("Content-type", "application/json");
 	xhttp.send(JSON.stringify(vueinst.focus));
+}
+
+function saveEntry(e_id) {
+	/* 1. Create new AJAX request */
+	var xhttp = new XMLHttpRequest();
+	/* 4. Handle response (callback function) */
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		    console.log(this.response);
+		}
+	};
+	/* 2. Open connection */
+	xhttp.open("POST", "/entry/save", true);
+	// First get the right index
+	for (var i = 0; i < vueinst.entries.length; i++) {
+		if (vueinst.entries[i].e_id == e_id) {
+			break;
+	}
+	/* 3. Send request */
+	xhttp.setRequestHeader("Content-type", "application/json");
+	xhttp.send(JSON.stringify(vueinst.entries[i]));
 }
 
 getJournals();

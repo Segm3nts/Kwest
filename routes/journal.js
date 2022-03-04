@@ -93,7 +93,7 @@ router.get("/fetch/:j_id", function(req, res, next) {
             res.sendStatus(500);
             return;
         }
-        var query = "SELECT title, timestamp, content FROM Entries INNER JOIN Tags WHERE j_id = ?;";
+        var query = "SELECT Entries.e_id, title, timestamp, content FROM Entries INNER JOIN Tags ON Entries.e_id = Tags.e_id WHERE j_id = ?;";
         connection.query(query, [req.params.j_id], function(err, rows, fields) {
             connection.release();
             if (err) {
