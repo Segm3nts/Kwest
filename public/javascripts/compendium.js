@@ -2,7 +2,8 @@
 let vueinst = Vue.createApp({
 	data: function() {
 		return {
-			showJournal: true,
+			showCompendium: true,
+			showJournal: false,
 			journals: [
 				/*{
 					j_id: 4,
@@ -125,10 +126,10 @@ let vueinst = Vue.createApp({
 }).mount('#mount');
 
 function showJournals() {
-	if (vueinst.showJournal) {
-		vueinst.showJournal = false;
+	if (vueinst.showCompendium) {
+		vueinst.showCompendium = false;
 	} else {
-		vueinst.showJournal = true;
+		vueinst.showCompendium = true;
 	}
 }
 
@@ -155,9 +156,7 @@ function getEntries(j_id) {
 		if (this.readyState == 4 && this.status == 200) {
 		    for (let i = 0; i < vueinst.journals.length; i++) {
 		    	if (vueinst.journals[i].j_id == j_id) {
-		    		if (vueinst.showJournal == false) {
-						vueinst.showJournal = true;
-					}
+		    		vueinst.showJournal = true;
 		    		vueinst.focus = vueinst.journals[i];
 		    		break;
 		    	}
@@ -234,12 +233,6 @@ function saveTitleDescriptionIcon() {
 function saveEntry(e_id) {
 	/* 1. Create new AJAX request */
 	var xhttp = new XMLHttpRequest();
-	/* 4. Handle response (callback function) */
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-		    console.log(this.response);
-		}
-	};
 	/* 2. Open connection */
 	xhttp.open("POST", "/entry/save", true);
 	// First get the right index
@@ -251,6 +244,25 @@ function saveEntry(e_id) {
 	/* 3. Send request */
 	xhttp.setRequestHeader("Content-type", "application/json");
 	xhttp.send(JSON.stringify(vueinst.entries[i]));
+}
+
+function deleteJournal(j_id) {
+	if (confirm("Are you sure you want to delete this journal?")) {
+		if (confirm("You will lose all entries within this journal. Are you sure?")) {
+			/* 1. Create new AJAX request */
+			var xhttp = new XMLHttpRequest();
+			/* 4. Handle response (callback function) */
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					getJournals();
+				}
+			};
+			/* 2. Open connection */
+			xhttp.open("GET", "/journal/delete/" + j_id, true);
+			/* 3. Send request */
+			xhttp.send();
+		}
+	}
 }
 
 function deleteEntry(e_id) {

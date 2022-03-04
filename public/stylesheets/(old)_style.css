@@ -235,20 +235,3 @@ textarea {
 .entry textarea {
 	height: 4em;
 }
-
-.checkbox {
-	float: left;
-	padding: 0.5em;
-	margin: 0.25em;
-	cursor: pointer;
-	font-size: 1.5em;
-	color: white;
-	background-color: #093;
-	border-radius: 1em;
-	vertical-align: middle;
-}
-
-.checkbox input {
-	height: 1.5em;
-	width: 1.5em;
-}

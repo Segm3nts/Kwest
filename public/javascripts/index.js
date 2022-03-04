@@ -17,8 +17,8 @@ let vueinst = Vue.createApp({
 	methods: {
 		create(event) {
 			this.settings.players.push({
-				name: "Name",
-				realname: "Real Name"
+				name: "",
+				realname: ""
 			});
 		},
 		remove(p_id) {
@@ -196,8 +196,6 @@ function updateCompendium(compendium) {
 	/* 4. Handle response (callback function) */
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			console.log(this.response);
-		    //vueinst.settings["players"] = JSON.parse(this.response);
 		    vueinst.isSettings = true;
 		}
 	};

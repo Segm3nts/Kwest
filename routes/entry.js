@@ -27,7 +27,6 @@ router.get("/new/:j_id", function(req, res, next) {
 				connection.query(query, [rows[0]["MAX(e_id)"], req.params.j_id], function(err, rows, fields) {
 				    connection.release();
 				    if (err) {
-		        		console.log(err);
 				        res.sendStatus(500);
 				        return;
 				    }

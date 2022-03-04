@@ -13,7 +13,6 @@ router.get('/get/:c_id', function(req, res, next) {
         connection.query(query, [req.params.c_id], function(err, rows, fields) {
             connection.release();
             if (err) {
-            	console.log(err)
                 res.sendStatus(500);
                 return;
             }

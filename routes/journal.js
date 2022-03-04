@@ -86,6 +86,35 @@ router.post("/save", function(req, res, next) {
     });
 });
 
+// DELETE a journal
+router.get("/delete/:j_id", function(req, res, next) {
+	req.pool.getConnection(function(err, connection)
+    {
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        // Remove the tags
+        var query = "DELETE FROM Tags WHERE j_id = ?;";
+        connection.query(query, [req.params.j_id], function(err, rows, fields) {
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            // Delete the journal
+        	var query = "DELETE FROM Journals WHERE j_id = ?;";
+		    connection.query(query, [req.params.j_id], function(err, rows, fields) {
+		        connection.release();
+		        if (err) {
+		            res.sendStatus(500);
+		            return;
+		        }
+		    	res.sendStatus(200);
+		    });
+        });
+    });
+});
+
 router.get("/fetch/:j_id", function(req, res, next) {
 	req.pool.getConnection(function(err, connection)
     {

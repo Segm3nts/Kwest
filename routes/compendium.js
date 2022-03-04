@@ -18,7 +18,6 @@ router.post("/new", function(req, res, next) {
         var query = "INSERT INTO Compendia (name, dm, password, timestamp) VALUES (?, ?, ?, CONVERT(?, DATE) );";
         connection.query(query, [req.body["name"], req.body["dm"], req.body["password"], currentDate], function(err, rows, fields) {
             if (err){
-            	console.log("one");
                 res.sendStatus(500);
                 return;
             }
@@ -27,7 +26,6 @@ router.post("/new", function(req, res, next) {
 		    let compendium_id = 0;
 		    connection.query(query, function(err, rows, fields) {
 		        if (err){
-		        	console.log("two");
 		            res.sendStatus(500);
 		            return;
 		        }
@@ -37,7 +35,6 @@ router.post("/new", function(req, res, next) {
 				connection.query(query, [compendium_id, req.body["dm"]], function(err, rows, fields) {
 				    connection.release();
 				    if (err){
-				    	console.log(err);
 				        res.sendStatus(500);
 				        return;
 				    }
@@ -60,7 +57,6 @@ router.get("/get", function(req, res, next) {
         connection.query(query, [req.params.id], function(err, rows, fields) {
             connection.release();
             if (err) {
-            	console.log(err)
                 res.sendStatus(500);
                 return;
             }
@@ -81,7 +77,6 @@ router.post("/delete", function(req, res, next) {
         var query = "SELECT password FROM Compendia WHERE c_id = ?;";
         connection.query(query, [req.body.c_id], function(err, rows, fields) {
             if (err) {
-            	console.log(err)
                 res.sendStatus(500);
                 return;
             }
@@ -90,7 +85,6 @@ router.post("/delete", function(req, res, next) {
 				var query = "DELETE FROM Players WHERE c_id = ?;";
 				connection.query(query, [req.body.c_id], function(err, rows, fields) {
 					if (err) {
-						console.log(err)
 						res.sendStatus(500);
 						return;
 					}
@@ -99,7 +93,6 @@ router.post("/delete", function(req, res, next) {
 					connection.query(query, [req.body.c_id], function(err, rows, fields) {
 						connection.release();
 						if (err) {
-							console.log(err)
 							res.sendStatus(500);
 							return;
 						}
@@ -125,7 +118,6 @@ router.get("/options", function(req, res, next) {
         connection.query(query, [req.params.id], function(err, rows, fields) {
             connection.release();
             if (err) {
-            	console.log(err)
                 res.sendStatus(500);
                 return;
             }
@@ -146,7 +138,6 @@ router.get("/settings/:c_id", function(req, res, next) {
         connection.query(query, [req.params.c_id], function(err, rows, fields) {
             connection.release();
             if (err) {
-            	console.log(err)
                 res.sendStatus(500);
                 return;
             }
@@ -160,7 +151,6 @@ router.post("/settings/update", function(req, res, next) {
 	req.pool.getConnection(function(err, connection)
     {
         if (err) {
-        	console.log("Step 1");
             res.sendStatus(500);
             return;
         }
@@ -168,7 +158,6 @@ router.post("/settings/update", function(req, res, next) {
         var query = "UPDATE Compendia SET dm = ?, name = ? WHERE c_id = ?;";
         connection.query(query, [req.body.dm, req.body.name, req.body.c_id], function(err, rows, fields) {
             if (err) {
-            	console.log("Step 2")
                 res.sendStatus(500);
                 return;
             }
@@ -177,7 +166,6 @@ router.post("/settings/update", function(req, res, next) {
         var query = "DELETE FROM Players WHERE c_id = ? AND name != 'Dungeon Master';";
         connection.query(query, [req.body.c_id], function(err, rows, fields) {
             if (err) {
-            	console.log("Step 3")
                 res.sendStatus(500);
                 return;
             }
@@ -187,7 +175,6 @@ router.post("/settings/update", function(req, res, next) {
         	var query = "INSERT INTO Players (c_id, name, realname) VALUES (?, ?, ?);";
 		    connection.query(query, [req.body.c_id, req.body.players[i].name, req.body.players[i].realname], function(err, rows, fields) {
 		        if (err) {
-		        	console.log("Step 4")
 		            res.sendStatus(500);
 		            return;
 		        }

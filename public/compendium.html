@@ -5,7 +5,7 @@
     	<meta charset="utf-8">
     	<link rel="stylesheet" href="../stylesheets/style.css">
     	<script src="https://kit.fontawesome.com/a1919cc9b1.js" crossorigin="anonymous"></script>
-    	<script src="https://unpkg.com/vue@3"></script>
+    	<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.prod.js"></script>
 		<script src="../javascripts/compendium.js" defer></script>
 	</head>
 	<body>
@@ -21,7 +21,7 @@
 		</div>
 		<br />
 		<div id="mount">
-			<ul class="compendium" v-if="showJournal">
+			<ul class="compendium" v-if="showCompendium">
 				<li>
 					<a class="smallbutton" onclick="newJournal()">
 						<i class="fa-solid fa-circle-plus buttonicon"></i>
@@ -35,7 +35,7 @@
 					</a>
 				</li>
 			</ul>
-			<div v-bind:class="showJournal ? 'information' : 'largeinformation'">
+			<div v-bind:class="showCompendium ? 'information' : 'fullwidthinfo'" v-if="showJournal">
 				<!-- The journal, showing all the entries that tag it -->
 				<br />
 				{{ parseTimestamp(focus.timestamp) }}
@@ -56,6 +56,10 @@
 						{{ icon.name }}
 					</option>
 				</select>
+				<a class="smallbutton" v-bind:onclick="'deleteJournal(' + focus.j_id + ')'">
+					<i class="fa-solid fa-trash buttonicon"></i>
+					<span class="magic">Delete Journal</span>
+				</a>
 				<hr />
 				<ul class="entry" v-for="entry in entries" :key="entry.e_id">
 					<li>
