@@ -61,6 +61,86 @@ let vueinst = Vue.createApp({
 					password: pwd
 				}));
 			}
+		},
+		parseTimestamp(timestamp) {
+			if (timestamp == undefined) {
+				return;
+			}
+			// Parse the string: date
+			var day = parseInt(timestamp[8] + timestamp[9]);
+			var month = parseInt(timestamp[5] + timestamp[6]);
+			var year = parseInt(timestamp[0] + timestamp[1] + timestamp[2] + timestamp[3]);
+			// Parse the string: time
+			var hours = parseInt(timestamp[11] + timestamp[12]);
+			var minutes = parseInt(timestamp[14] + timestamp[15]);
+			// Timezone: +9:30
+			hours += 10;
+			minutes += 30;
+			if (minutes > 59) {
+				hours++;
+				minutes -= 60;
+			}
+			if (hours > 23) {
+				day++;
+				hours -= 24;
+				if (day > 28 && month == 2) {
+					month++;
+					day -= 28;
+				} else if (day > 30 && (month == 4 || month == 6 || month == 9 || month == 11)) {
+					month++;
+					day -= 30;
+				} else if (day > 31) {
+					month++;
+					day -= 31;
+				}
+			}
+			if (month > 12) {
+				year++;
+				month -= 12;
+			}
+			// Lookup the month name
+			switch(month) {
+				case 1:
+					month = "January";
+					break;
+				case 2:
+					month = "February";
+					break;
+				case 3:
+					month = "March";
+					break;
+				case 4:
+					month = "April";
+					break;
+				case 5:
+					month = "May";
+					break;
+				case 6:
+					month = "June";
+					break;
+				case 7:
+					month = "July";
+					break;
+				case 8:
+					month = "August";
+					break;
+				case 9:
+					month = "September";
+					break;
+				case 10:
+					month = "October";
+					break;
+				case 11:
+					month = "November";
+					break;
+				case 12:
+					month = "December";
+					break;
+				default:
+					console.log("Error! No lookup found for the current month!");
+			}
+			// Return the formatted timestamp
+			return day + " " + month + " " + year
 		}
 	}
 }).mount('#cards');

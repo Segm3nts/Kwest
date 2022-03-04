@@ -78,7 +78,7 @@
 					Dungeon Master: {{ cmp.dm }}
 				</p>
 				<p class="date">
-					Compendium started: {{ cmp.timestamp }}
+					Compendium started: {{ parseTimestamp(cmp.timestamp) }}
 				</p>
 				<br /><br /><br /><br />
 				<a class="bigbutton" v-bind:href="'/view/' + cmp.c_id">
