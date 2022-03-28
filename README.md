@@ -14,7 +14,13 @@ cd kwest
 git clone https://github.com/Segm3nts/Kwest.git
 ```
 
-Then, to run the web application on your `localhost`, run the following command, with `nodejs` and `npm` installed.
+Before running the web application, make sure to create the MySQL database schema as defined in *kwest.sql*.
+
+```bash
+mysql < kwest.sql
+```
+
+To run the web application on your `localhost`, run the following command, with `nodejs` and `npm` installed.
 
 ```bash
 npm start
